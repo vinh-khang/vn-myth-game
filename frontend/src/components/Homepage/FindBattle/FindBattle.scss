@@ -1,0 +1,31 @@
+.find-battle-container {
+    height: 100%;
+    width: 20%;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+
+    .find-battle-content {
+
+
+        filter: drop-shadow(5px 5px 5px rgb(63, 63, 63));
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid white;
+
+        .find-battle-btn {
+            position: relative;
+        }
+
+        .find-battle-btn:hover {
+            opacity: 0.9;
+            cursor: pointer;
+        }
+
+        .find-battle-btn:active {
+            transform: translateY(1px);
+        }
+    }
+
+}

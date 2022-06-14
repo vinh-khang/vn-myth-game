@@ -1,0 +1,101 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: Dosis, sans-serif;
+  min-width: 1280px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+//   .homepage-container {
+//     background-color: black;
+//     padding: 10px 10%;
+//   }
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//   .homepage-container {
+//     background-color: white;
+//     padding: 10px 10%;
+//   }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//   .homepage-container {
+//     background-color: white;
+//     padding: 10px 10%;
+//   }
+// }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//   .homepage-container {
+//     background-color: white;
+//     padding: 10px 10%;
+//   }
+// }
+
+
+@include media-breakpoint-down(sm) {
+  .homepage-container {
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10%;
+  }
+
+  .logo {
+    display: none;
+  }
+
+}
+
+@include media-breakpoint-down(md) {
+  .homepage-container {
+    background-color: rgb(185, 185, 185);
+    padding: 10px 10%;
+  }
+
+  .logo {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .homepage-container {
+    background-color: rgb(91, 91, 91);
+    padding: 10px 10%;
+  }
+
+}
+
+@include media-breakpoint-down(xl) {
+  .homepage-container {
+    background-color: rgb(0, 0, 0);
+    padding: 10px 10%;
+  }
+
+
+
+}

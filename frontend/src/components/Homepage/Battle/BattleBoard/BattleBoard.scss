@@ -1,0 +1,21 @@
+.flex-battle-board {
+    display: flex;
+    flex-direction: row;
+
+
+    .battle-boat {
+        width: 500px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+
+    // .boat {
+    //     width: 60px;
+    //     height: 20px;
+    //     background-color: aquamarine;
+    // }
+
+}

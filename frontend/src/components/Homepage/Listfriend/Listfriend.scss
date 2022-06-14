@@ -1,0 +1,23 @@
+.listfriend-form {
+    width: 30%;
+    margin-left: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    position: relative;
+    padding: 5px 20px;
+    border: 1px solid white;
+
+    .listfriend-title {
+        color: white;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 15px 0px;
+    }
+
+    .text-label {
+        color: white;
+
+    }
+
+}

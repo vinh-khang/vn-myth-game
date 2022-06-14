@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Dosis';
+  src: local('Dosis'), url(./assets/font/Dosis-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Internation';
+  src: local('Dosis'), url(./assets/font/SVN-Internation.ttf) format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Dosis', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

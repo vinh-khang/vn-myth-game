@@ -1,0 +1,77 @@
+.overlay {
+    position: fixed;
+    /* Sit on top of the page content */
+    display: block;
+    /* Hidden by default */
+    width: 100%;
+    /* Full width (cover the whole page) */
+    height: 100%;
+    /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black background with opacity */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+}
+
+.login-background {
+    background: url('../../assets/background/vanlang-2.jpg') center center no-repeat;
+    width: 100%;
+    background-size: 1230px;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+
+}
+
+.login-img {
+    width: 50%;
+
+}
+
+.login-form {
+    width: 30%;
+    margin-left: 60%;
+    background: #3e3940;
+    border-radius: 10px;
+    z-index: 3;
+    padding: 10px 40px;
+    // height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+    .login-logo {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        .logo {
+            width: 150px;
+            margin: auto;
+        }
+    }
+
+    .icon {
+        height: 40px;
+
+    }
+
+
+    .login-title {
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 20px 0px;
+    }
+
+    .text-label {
+        color: rgb(82, 82, 82);
+    }
+
+}

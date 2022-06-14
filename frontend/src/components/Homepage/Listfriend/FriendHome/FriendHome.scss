@@ -1,0 +1,25 @@
+.friend-home-container {
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    -webkit-background-clip: padding-box !important;
+    /* for Safari */
+    background-clip: padding-box !important;
+    margin: 10px 3px;
+    border: 3px;
+    padding: 5px 15px;
+    color: white;
+    align-items: center;
+    justify-items: center;
+
+    .friend-avatar {
+        padding: 0px;
+
+    }
+}
+
+.friend-home-container:hover {
+    border: 1px solid white !important;
+    -webkit-background-clip: padding-box !important;
+    /* for Safari */
+    background-clip: padding-box !important;
+    cursor: pointer;
+}

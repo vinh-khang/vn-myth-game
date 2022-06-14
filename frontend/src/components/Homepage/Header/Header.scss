@@ -1,0 +1,72 @@
+.header {
+    position: relative;
+    border-radius: 10px 10px 0px 0px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    .top-header {
+        display: block;
+
+        .logo {
+            height: 90px;
+            filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
+        }
+
+        .coint {
+            width: 25px;
+        }
+
+        .setting {
+            background: rgba(0, 0, 0, 1) !important;
+            right: 0 !important;
+            left: auto !important;
+
+            .setting-item {
+                color: rgb(211, 211, 211) !important;
+                cursor: pointer;
+            }
+
+            .setting-item:hover {
+                color: white !important;
+                background: none;
+            }
+
+        }
+
+        .navbar-nav {
+            width: 20%;
+            justify-content: space-between;
+            font-weight: 900;
+        }
+
+        .player-profile {
+            display: flex;
+            position: relative;
+            justify-content: flex-start;
+            align-items: center;
+
+            .player-name {
+                margin-left: 24px;
+                font-size: 20px;
+            }
+
+            .avatar {
+                width: 50px;
+                height: 50px;
+                position: relative;
+
+            }
+
+            .avatar_frame {
+                position: absolute;
+                width: 80px;
+                left: -15px;
+            }
+
+        }
+
+
+    }
+
+
+}
