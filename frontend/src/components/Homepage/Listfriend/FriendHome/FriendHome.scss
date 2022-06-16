@@ -1,3 +1,5 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap";
+
 .friend-home-container {
     border: 1px solid rgba(255, 255, 255, 0.5) !important;
     -webkit-background-clip: padding-box !important;
@@ -14,6 +16,7 @@
         padding: 0px;
 
     }
+
 }
 
 .friend-home-container:hover {

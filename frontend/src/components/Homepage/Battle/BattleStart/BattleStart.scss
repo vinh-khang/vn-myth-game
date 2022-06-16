@@ -1,4 +1,16 @@
-.battle-board {
-    margin: 20px;
+.start-battle-content {
+    background: url('../../../../assets/background/bg_nv.png') center center no-repeat;
+    background-size: 1400px;
     width: 100%;
+    height: 680px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    position: relative;
+    margin: 0px auto;
+    color: white;
+
+    .battle-board {
+        margin: 20px;
+        width: 100%;
+    }
 }

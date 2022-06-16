@@ -3,25 +3,42 @@ import Homepage from "./components/Homepage/Homepage";
 import { Routes, Route } from "react-router-dom";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import './App.scss';
+import "./App.scss";
 import Login from "./components/Login/Login";
 import BattleWaiting from "./components/Homepage/Battle/BattleWaiting/BattleWaiting";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { PrivateRoute } from './utils/common';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "swiper/css/bundle";
+import { PrivateRoute } from "./utils/common";
 
 function App() {
-
   return (
-    <DndProvider backend={HTML5Backend} >
+    <DndProvider backend={HTML5Backend}>
       <Routes>
-        <Route path="/" element={
-          <PrivateRoute>
-            <Homepage />
-          </PrivateRoute>
-        } />
-        <Route path="/battle-start" element={<BattleStart />} />
-        <Route path="/battle-waiting" element={<BattleWaiting />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Homepage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/battle-start"
+          element={
+            <PrivateRoute>
+              <BattleStart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/battle-waiting"
+          element={
+            <PrivateRoute>
+              <BattleWaiting />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
       </Routes>
     </DndProvider>

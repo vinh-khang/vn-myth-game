@@ -1,0 +1,22 @@
+.swiper {
+    width: 320px;
+    height: 60vh;
+    border-radius: 3px;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+
+    // .character-card:hover {
+    //     filter: drop-shadow(1px 0px 0px rgb(255, 255, 255));
+    // }
+}
+
+.swiper-slide-shadow {
+    background: none !important;
+}
