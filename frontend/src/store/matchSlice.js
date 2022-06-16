@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  matchInfo: { roomID: 0 },
+  matchInfo: { roomID: "0", socket: {} },
 };
 
 export const matchSlice = createSlice({
@@ -9,13 +9,16 @@ export const matchSlice = createSlice({
   initialState,
   reducers: {
     updateMatchInfo: (state, action) => {
-      state.match = action.payload;
+      state.matchInfo = action.payload;
+      console.log(action.payload);
     },
   },
 });
 
 export const { updateMatchInfo } = matchSlice.actions;
 
-export const selectMatchInfo = (state) => state.user.matchInfo;
+export const selectMatchInfo = (state) => {
+  return state.match.matchInfo;
+};
 
 export default matchSlice.reducer;

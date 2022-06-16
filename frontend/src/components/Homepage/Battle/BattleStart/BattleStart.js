@@ -1,21 +1,16 @@
-import queryString from "query-string";
-import io from "socket.io-client";
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
-import BattleBoard from "../BattleBoard/BattleBoard";
 import { useSelector } from "react-redux";
+
+import BattleBoard from "../BattleBoard/BattleBoard";
+import { socket } from "../../../../utils/serverConfig";
 import { selectUserInfo } from "../../../../store/userSlice";
+import { selectMatchInfo } from "../../../../store/matchSlice";
 
 import "./BattleStart.scss";
 
 const BattleStart = () => {
-  const searchLocation = useLocation().search;
-  const ENDPOINT = "localhost:5000";
   const userInfo = useSelector(selectUserInfo);
-  let socket = "";
-  const [net, setNet] = useState({});
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
+  const matchInfo = useSelector(selectMatchInfo);
   const [players, setPlayers] = useState([]);
   const [squarePlayer1, setSquarePlayer1] = useState([]);
   const [squarePlayer2, setSquarePlayer2] = useState([]);
@@ -26,21 +21,6 @@ const BattleStart = () => {
   const [ready1, setReady1] = useState(false);
   const [ready2, setReady2] = useState(false);
   const [turn, setTurn] = useState(0);
-
-  useEffect(() => {
-    const name = userInfo.displayName;
-    const room = "10";
-    socket = io(ENDPOINT);
-    setRoom(room);
-    setName(name);
-    setNet(socket);
-
-    socket.emit("join", { name, room }, (error) => {
-      if (error) {
-        alert(error);
-      }
-    });
-  }, [ENDPOINT, searchLocation]);
 
   useEffect(() => {
     socket.on("squareActackPlayer1", (squareActackPlayer1) => {
@@ -75,9 +55,9 @@ const BattleStart = () => {
   }, []);
 
   const sendSquarePlayer = (value, id, userID) => {
-    if (id === 0 && userID !== net.id) {
-      if (value && net) {
-        net.emit("actackPlayer1", value, () =>
+    if (id === 0 && userID !== socket.id) {
+      if (value && socket) {
+        socket.emit("actackPlayer1", value, () =>
           setSquarePlayer1([...squarePlayer1, value])
         );
       }
@@ -91,9 +71,9 @@ const BattleStart = () => {
       setTurn(1);
     }
 
-    if (id === 1 && userID !== net.id) {
-      if (value && net) {
-        net.emit("actackPlayer2", value, () =>
+    if (id === 1 && userID !== socket.id) {
+      if (value && socket) {
+        socket.emit("actackPlayer2", value, () =>
           setSquarePlayer2([...squarePlayer2, value])
         );
       }
@@ -110,10 +90,10 @@ const BattleStart = () => {
 
   const readyForBattle = (id) => {
     if (id === 0) {
-      net.emit("readyForBattle1", targetPlayer1);
+      socket.emit("readyForBattle1", targetPlayer1);
       setReady1(!ready1);
     } else {
-      net.emit("readyForBattle2", targetPlayer2);
+      socket.emit("readyForBattle2", targetPlayer2);
       setReady2(!ready2);
     }
   };
@@ -127,7 +107,7 @@ const BattleStart = () => {
               <BattleBoard
                 user={players ? players[0] : {}}
                 id={0}
-                socket={net.id}
+                socket={socket.id}
                 square={squarePlayer1}
                 sendSquare={sendSquarePlayer}
                 targetPlayer={targetPlayer1}
@@ -141,7 +121,7 @@ const BattleStart = () => {
               <BattleBoard
                 user={players ? players[1] : {}}
                 id={1}
-                socket={net.id}
+                socket={socket.id}
                 square={squarePlayer2}
                 sendSquare={sendSquarePlayer}
                 targetPlayer={targetPlayer2}

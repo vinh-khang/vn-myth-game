@@ -13,28 +13,32 @@ const socketIo = require("socket.io")(server, {
 });
 
 socketIo.on("connection", (socket) => {
-  ///Handle khi có connect từ client tới
   console.log("New client connected with ID: " + socket.id);
-
-  socket.on("join", function ({ name, room }, callback) {
-    // Handle khi có sự kiện tên là sendDataClient từ phía client
-    const { error, user } = addUser({ id: socket.id, name, room });
+  socket.on("join", function ({ name, room, uid, photoURL }, callback) {
+    const { error, user } = addUser({
+      id: socket.id,
+      name: name,
+      room,
+      uid,
+      photoURL,
+    });
     if (error) return callback(error);
 
     socket.join(user.room);
 
     socket.emit("message", {
       user: "admin",
-      text: `${user.name}, welcome to room ${user.room}.`,
+      text: `${user.displayName}, welcome to room ${user.room}.`,
     });
-    socket.broadcast
-      .to(user.room)
-      .emit("message", { user: "admin", text: `${user.name} has joined!` });
+    socket.broadcast.to(user.room).emit("message", {
+      user: "admin",
+      text: `${user.displayName} has joined!`,
+    });
 
-    socketIo
-      .to(user.room)
-      .emit("roomData", { room: user.room, users: getUsersInRoom(user.room) });
-    // console.log({ room: user.room, users: getUsersInRoom(user.room) })
+    socketIo.to(user.room).emit("roomData", {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    });
     callback();
   });
 
@@ -78,18 +82,14 @@ socketIo.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
+    console.log(`${socket.id} has left.`);
     const user = removeUser(socket.id);
 
     if (user) {
-      socketIo
-        .to(user.room)
-        .emit("message", { user: "Admin", text: `${user.name} has left.` });
-      socketIo
-        .to(user.room)
-        .emit("roomData", {
-          room: user.room,
-          users: getUsersInRoom(user.room),
-        });
+      socketIo.to(user.room).emit("roomData", {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      });
       console.log(`${user.name} has left.`);
     }
   });

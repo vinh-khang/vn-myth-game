@@ -5,12 +5,19 @@ import { Link } from "react-router-dom";
 import hoatietco from "../../../../../assets/element/hoatietco.png";
 import "./PlayerProfile.scss";
 
-function PlayerProfile() {
-  const userInfo = useSelector(selectUserInfo);
+function PlayerProfile({ isOtherUser }) {
+  let userInfo = useSelector(selectUserInfo);
+  if (isOtherUser) {
+    userInfo = {
+      displayName: isOtherUser.name,
+      uid: isOtherUser.uid,
+      photoURL: isOtherUser.photoURL,
+    };
+  }
 
   return (
     <div>
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card mt-3" style={{ width: "18rem" }}>
         <img
           src={userInfo && userInfo.photoURL}
           className="img-fluid avatar-profile rounded-circle mt-2"
@@ -21,9 +28,6 @@ function PlayerProfile() {
             {userInfo && userInfo.displayName}
           </h5>
           <img className="img-fluid" src={hoatietco} />
-          <Link to="/battle-start" className="btn btn-primary">
-            Sẵn sàng
-          </Link>
         </div>
       </div>
     </div>

@@ -27,6 +27,8 @@ const Header = () => {
     storage.removeItem("persist:user");
   };
 
+  console.log(userInfo);
+
   return (
     <header className="header noselect">
       <section className="top-header">

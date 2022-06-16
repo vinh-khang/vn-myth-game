@@ -30,6 +30,25 @@
                 margin: auto;
                 border-radius: 30px 0px 0px 30px;
                 font-weight: 600;
+
+                .join-room {
+                    width: 50% !important;
+                    background: none;
+
+                    .input-room {
+                        background: none !important;
+                        color: white;
+                        height: 30px;
+                        border-radius: 15px 0px 0px 15px;
+                    }
+
+                    .join-room-btn {
+                        height: 30px;
+                        border-radius: 15px 15px 15px 15px;
+                        font-size: 8px;
+
+                    }
+                }
             }
         }
     }

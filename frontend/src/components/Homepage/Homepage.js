@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Header from "./Header/Header";
 import FindBattle from "./FindBattle/FindBattle";
-import { Routes, Route, Link } from "react-router-dom";
-import BattleStart from "./Battle/BattleStart/BattleStart";
-import "./Homepage.scss";
 import Listfriend from "./Listfriend/Listfriend";
+
+import "./Homepage.scss";
 
 const Homepage = () => {
   return (
@@ -14,9 +13,9 @@ const Homepage = () => {
           <Header />
           <div className="main-content">
             <div className="left-content">
-              <Listfriend className="" />
+              <Listfriend />
             </div>
-            <FindBattle className="" />
+            <FindBattle />
           </div>
         </div>
       </div>
