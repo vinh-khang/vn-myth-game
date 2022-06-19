@@ -1,16 +1,21 @@
 const http = require("http");
 const express = require("express");
 const cors = require("cors");
+import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./route/web";
 import { addUser, removeUser, getUser, getUsersInRoom } from "./users";
 
 const app = express();
+app.use(cors());
 const server = http.createServer(app);
 const socketIo = require("socket.io")(server, {
   cors: {
     origin: "*",
   },
 });
+
+viewEngine(app);
+initWebRoutes(app);
 
 socketIo.on("connection", (socket) => {
   console.log("New client connected with ID: " + socket.id);
@@ -25,15 +30,6 @@ socketIo.on("connection", (socket) => {
     if (error) return callback(error);
 
     socket.join(user.room);
-
-    socket.emit("message", {
-      user: "admin",
-      text: `${user.displayName}, welcome to room ${user.room}.`,
-    });
-    socket.broadcast.to(user.room).emit("message", {
-      user: "admin",
-      text: `${user.displayName} has joined!`,
-    });
 
     socketIo.to(user.room).emit("roomData", {
       room: user.room,
@@ -94,8 +90,6 @@ socketIo.on("connection", (socket) => {
     }
   });
 });
-
-initWebRoutes(app);
 
 server.listen(process.env.PORT || 5000, () =>
   console.log(`Server has started.`)

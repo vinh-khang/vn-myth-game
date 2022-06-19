@@ -3,7 +3,12 @@ import "./InviteFriend.scss";
 
 function InviteFriend() {
   return (
-    <div className="invite-friend-container mt-2 rounded">InviteFriend</div>
+    <>
+      <div className="invite-friend-container rounded mt-3 pt-3">
+        <i class="fas fa-user-plus"></i>
+        <h6>Mời thêm bạn</h6>
+      </div>
+    </>
   );
 }
 

@@ -1,19 +1,22 @@
-const { Sequelize } = require('sequelize');
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import "firebase/compat/analytics";
 
-// Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize('medical_website', 'root', null, {
-    host: 'localhost',
-    dialect: 'mysql',
-    logging: false
-});
+const firebaseConfig = {
+  apiKey: "AIzaSyDqDJiOes7UgDeGE3IV2L2W9fgwgC3v8dw",
+  authDomain: "vn-myth-game-dtb.firebaseapp.com",
+  projectId: "vn-myth-game-dtb",
+  storageBucket: "vn-myth-game-dtb.appspot.com",
+  messagingSenderId: "888588202127",
+  appId: "1:888588202127:web:6d23df40ecaae22f0700fa",
+  measurementId: "G-HEW5QQ7BHM",
+};
 
-let connectDB = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-}
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const auth = firebase.auth();
+db.settings({ timestampsInSnapshots: true });
 
-module.exports = connectDB;
+export { db, auth, firebase };

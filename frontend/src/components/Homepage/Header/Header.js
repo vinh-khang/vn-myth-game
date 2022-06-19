@@ -63,8 +63,11 @@ const Header = () => {
                   draggable={false}
                 />
                 <div className="player-name">
-                  <div>{userInfo.displayName}</div>
-                  <h5>Kẻ hủy diệt</h5>
+                  <div className="fs-6 ">{userInfo.displayName}</div>
+                  <div className="fs-6 ">
+                    <i className="fa-solid fa-fire-flame-curved danger me-3 text-warning"></i>
+                    Cấp 12
+                  </div>
                 </div>
               </ul>
               <a className="logo">

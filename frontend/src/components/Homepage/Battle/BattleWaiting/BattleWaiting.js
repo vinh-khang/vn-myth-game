@@ -15,7 +15,7 @@ import SelectCharacter from "./SelectCharacter/SelectCharacter";
 import { updateMatchInfo } from "../../../../store/matchSlice";
 import { addPlayers } from "../../../../store/playersSlice";
 import { socket } from "../../../../utils/serverConfig";
-
+import nut from "../../../../assets/element/btn-custom.png";
 import "./BattleWaiting.scss";
 
 const BattleWaiting = () => {
@@ -36,7 +36,7 @@ const BattleWaiting = () => {
     dispatch(updateMatchInfo({ roomID: roomID }));
     socket.emit(
       "join",
-      { name: displayName, room: roomID, uid, photoURL },
+      { name: displayName, room: "" + roomID, uid, photoURL },
       (error) => {
         if (error) {
           alert(error);
@@ -74,15 +74,30 @@ const BattleWaiting = () => {
     <>
       <div className="homepage-container noselect">
         <div className="waiting-battle-content">
-          <Header />
           <div className="main-content">
-            <div className="left-content m-3">
-              <Link to="/" type="button" className="btn btn-light">
-                Quay về
-              </Link>
-              <Listfriend />
+            <div className="left-content">
+              <div className="title">
+                <i className="fa-solid fa-user-shield me-2"></i> Chọn anh hùng
+                cho bạn
+              </div>
+              <div className="hero-selection">
+                <SelectCharacter />
+              </div>
             </div>
-            <SelectCharacter />
+            <div className="middle-content">
+              <div className="text-center mid-title"></div>
+              <PlayerProfile isOtherUser={false} />
+              <div className="row">
+                <i class="fas fa-times-circle"></i>
+                <img
+                  src={nut}
+                  className=""
+                  style={{ width: "250px" }}
+                  alt="..."
+                />
+              </div>
+            </div>
+
             <div className="right-content">
               <div className="room-waiting mb-2 row  mt-2">
                 <div className="room-detail col-6">
@@ -92,7 +107,7 @@ const BattleWaiting = () => {
                   <input
                     type="number"
                     className="form-control input-room"
-                    placeholder="Gia nhập phòng"
+                    placeholder="Phòng"
                     onChange={(e) => setJoinRoom(e.target.value)}
                   />
                   <button
@@ -104,8 +119,7 @@ const BattleWaiting = () => {
                   </button>
                 </div>
               </div>
-
-              <PlayerProfile isOtherUser={false} />
+              <h6>Đấu với bạn bè</h6>
               {players.length > 1 ? (
                 <PlayerProfile
                   isOtherUser={players.length > 1 ? findOtherPlayer : false}
@@ -113,6 +127,9 @@ const BattleWaiting = () => {
               ) : (
                 <InviteFriend />
               )}
+              <Link to="/" type="button" className="btn btn-light">
+                Quay về
+              </Link>
             </div>
           </div>
         </div>
